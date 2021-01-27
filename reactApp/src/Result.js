@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 
 class Result extends Component {
+  goBack = (item) => {
+    localStorage.setItem("selectedgamedata", JSON.stringify(item));
+    this.props.history.push("/");
+  };
   render() {
+    let dat =
+      localStorage.getItem("gamedata") !== undefined
+        ? JSON.parse(localStorage.getItem("gamedata"))
+        : [];
     return (
       <div className="main-table">
         <h2 className="text-center mb-2">The Hangman Game</h2>
@@ -15,23 +23,43 @@ class Result extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="date-score">22/01/2021</td>
-              <td className="text-center v-middle game-error">3</td>
-              <td className="text-center game-finish">
-                <input type="checkbox" name />
-              </td>
-              <td className="text-center">
-                <button
-                  className="play-btn"
-                  onClick={() => this.props.history.push("/")}
-                >
-                  <i className="fas fa-play-circle" />
-                </button>
-              </td>
-            </tr>
+            {dat &&
+              dat.map((item) => (
+                <tr>
+                  <td className="date-score">{item.date}</td>
+                  <td className="text-center v-middle game-error">
+                    {5 - item.retries}
+                  </td>
+                  <td className="text-center game-finish">
+                    <input
+                      type="checkbox"
+                      name
+                      checked={item.gameState !== "start"}
+                    />
+                  </td>
+
+                  <td className="text-center">
+                    {item.gameState === "start" && (
+                      <button
+                        className="play-btn"
+                        onClick={() => this.goBack(item)}
+                      >
+                        <i className="fas fa-play-circle" />
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
+        <div className="text-center">
+          <button
+            className="save-btn"
+            onClick={() => this.props.history.push("/")}
+          >
+            Play Game
+          </button>
+        </div>
       </div>
     );
   }
