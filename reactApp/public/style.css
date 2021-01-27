@@ -96,9 +96,7 @@ input[type="checkbox"] {
 }
 .word-field {
   padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 .word-field input {
   border: none;
@@ -126,4 +124,107 @@ input[type="checkbox"] {
   border: none;
   background: #6c5ce7;
   border-radius: 5px;
+  margin: 0 5px;
+}
+.LetterBlock {
+  border: 1px solid #000;
+  width: 28px;
+  margin: 0 7px;
+  text-align: center;
+  margin-bottom: 10px;
+  height: 28px;
+  line-height: 28px;
+}
+
+.button-wrap {
+  display: flex;
+  width: 300px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  padding-top: 30px;
+}
+.crossLetter:after {
+  content: "";
+  position: absolute;
+  border-left: 5px solid #ff00009e;
+  height: 29px;
+  width: 0;
+  transform: rotate(-45deg);
+  right: 10px;
+}
+.crossLetter:before {
+  content: "";
+  position: absolute;
+  border-right: 5px solid #ff00009e;
+  height: 29px;
+  width: 2px;
+  transform: rotate(45deg);
+}
+.crossLetter {
+  position: relative;
+}
+.game_lose_status,
+.game_win_status {
+  text-align: center;
+  padding: 32px 0;
+}
+.game_lose_status span {
+  font-size: 28px;
+  background: #f00;
+  color: #fff;
+  font-weight: 900;
+  padding: 12px 22px;
+  border-radius: 5px;
+  box-shadow: 3px 5px 6px 0 #5d5d5d70;
+}
+
+.game_win_status span {
+  font-size: 28px;
+  background: #1bad09;
+  color: #fff;
+  font-weight: 900;
+  padding: 12px 22px;
+  border-radius: 5px;
+  box-shadow: 3px 5px 6px 0 #5d5d5d70;
+}
+.leftarm,
+.rightarm,
+.leftfoot,
+.rightfoot {
+  position: relative;
+}
+.leftarm:before {
+  content: "";
+  position: absolute;
+  border: 1px solid #000;
+  height: 40px;
+  transform: rotate(119deg);
+  left: 10px;
+}
+.rightarm:before {
+  content: "";
+  position: absolute;
+  border: 1px solid #000;
+  height: 40px;
+  transform: rotate(58deg);
+  right: 5px;
+}
+.leftfoot:before {
+  content: "";
+  position: absolute;
+  border: 1px solid #000;
+  height: 40px;
+  transform: rotate(45deg);
+  left: 13px;
+  bottom: -133px;
+}
+.rightfoot:before {
+  content: "";
+  position: absolute;
+  border: 1px solid #000;
+  height: 40px;
+  transform: rotate(132deg);
+  right: 6px;
+  bottom: -133px;
 }
